@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended", // This ensures that ESLint's recommended rules are included
+    "plugin:@typescript-eslint/recommended" // This adds TypeScript-specific recommended rules
+  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off", // Disable no-explicit-any rule
+    "@typescript-eslint/no-empty-object-type": "off", // Disable no-empty-object-type rule
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }], // Warn about unused vars (but allow unused args prefixed with _)
+    "react/no-unescaped-entities": "off", // Disable warning for unescaped characters in JSX
+    "react-hooks/exhaustive-deps": "warn" // Warn about missing dependencies in `useEffect` (you can set this to "off" if you prefer)
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json" // Ensure ESLint uses your TypeScript configuration
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off", // Disable explicit return type for functions (if you don't want to enforce it)
+        "@typescript-eslint/explicit-function-return-type": "off" // Disable explicit return type for functions (if you don't want to enforce it)
+      }
+    }
+  ]
+}
