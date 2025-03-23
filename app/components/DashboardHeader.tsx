@@ -9,7 +9,7 @@ import {
 } from '@/redux/features/notifications/notificationApi';
 import { format } from 'timeago.js';
 
-const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || 'https://e-learning-server-three.vercel.app';
+const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || 'https://e-learning-client-two.vercel.app';
 const isSecure = ENDPOINT.startsWith('https');
 const socket = socketIO(ENDPOINT, {
   transports: ['websocket'],
@@ -79,7 +79,7 @@ const DashboardHeader: FC<Props> = ({
     const handleNotification = (notificationData: any) => {
       console.log('Received notification:', notificationData);
 
-      setNotification((prevNotifications) => [
+      setNotification((prevNotifications:any) => [
         notificationData,
         ...prevNotifications,
       ]);
@@ -137,7 +137,7 @@ const DashboardHeader: FC<Props> = ({
           Notifications
         </h5>
         <div className="h-full overflow-y-auto p-3 space-y-4">
-          {notification.map((item, index) => (
+          {notification.map((item:any, index:number) => (
             <div
               key={index}
               className="dark:bg-[#2d3a4ea1] bg-[#00000013] p-3 rounded-lg shadow-md"

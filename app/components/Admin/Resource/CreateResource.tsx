@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 import Loader from "../../Loader/Loader";
 import { useCreateResourceMutation } from "@/redux/features/resources/resourceApi";
-
+import Image from "next/image";
 const CreateResource = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,7 +12,7 @@ const CreateResource = () => {
     category: "",
     pdfFile: null, // Store File object
     thumbnailFile: null, // Store File object
-    links: [] as string[],  // Store links array
+    links: [] as string[], // Store links array
   });
 
   const [preview, setPreview] = useState<string | null>(null); // For thumbnail preview
@@ -65,7 +65,10 @@ const CreateResource = () => {
     }
   };
 
-  const handleLinkChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleLinkChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const { value } = e.target;
     const updatedLinks = [...formData.links];
     updatedLinks[index] = value;
@@ -205,7 +208,13 @@ const CreateResource = () => {
               />
               {preview && (
                 <div className="mt-4">
-                  <img src={preview} alt="Thumbnail Preview" className="w-32 h-32 object-cover rounded-lg" />
+                  <Image
+                    src={preview}
+                    alt="Thumbnail Preview"
+                    width={128} // Set appropriate width
+                    height={128} // Set appropriate height
+                    className="object-cover rounded-lg"
+                  />
                 </div>
               )}
             </div>

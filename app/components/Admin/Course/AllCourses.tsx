@@ -226,7 +226,7 @@ const AllCourses = () => {
         toast.error(errorMessage.data.message);
       }
     }
-  }, [isSuccess, error]);
+  }, [isSuccess, error,refetch]);
 
   const handleDelete = async () => {
     await deleteCourse(courseId);
