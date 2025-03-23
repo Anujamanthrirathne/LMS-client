@@ -137,7 +137,7 @@ const ResourceCard: React.FC<Props> = ({ resource }) => {
               {/* External Links */}
               {Array.isArray(resource.links) && resource.links.length > 0 && (
                 <a
-                href={resource.links[0].replace(/[\"[\]]/g, '')} // Fix stringified array issue
+                  href={resource.links[0].replace(/["[\]]/g, '')} // Fix stringified array issue
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 block text-blue-600 dark:text-blue-400 underline"
